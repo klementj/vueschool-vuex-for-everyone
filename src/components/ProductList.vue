@@ -14,17 +14,18 @@
 
 <script>
 import shop from '@/api/shop.js'
+import store from '@/store/index.js'
 
 export default {
-  data () {
-    return {
-      products: []
+  computed: {
+    products () {
+      return store.state.products
     }
   },
 
   created () {
     shop.getProducts(products => {
-      this.products = products
+      store.commit('setProducts', products)
     })
   }
 }

@@ -1,28 +1,31 @@
-import Vuex from 'vuex';
-import Vue from 'vue';
+import Vuex from 'vuex'
+import Vue from 'vue'
 
 Vue.use(Vuex)
 
-new Vuex.Store({
+export default new Vuex.Store({
   state: { // = data
     products: []
   },
 
   getter: { // = computed properties
     productsCount () {
-      //...
-    }
-  }, 
-
-  actions: {
-    fetchProducts () {
-      // make the call
+      // ...
     }
   },
 
-  mutation: {
-    setProducts () {
+  // Actions må være komplekse, men aldrig opdatere state direkte
+  actions: {
+    fetchProducts () {
+      // make the call
+      // run setProducts mutation
+    }
+  },
+
+  mutations: {
+    setProducts (state, products) { // responsible for updating a single piece of state
       // update products
+      state.products = products
     }
   }
 })
